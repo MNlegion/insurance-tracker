@@ -6,7 +6,9 @@ const Item = require('../models/itemModel');
 // @route GET /api/items
 // @access Private
 const getItems = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: 'Get Items' })
+    const items = await Item.find();
+
+    res.status(200).json(items)
 });
 
 // @desc   Create Item
@@ -18,7 +20,11 @@ const createItem = asyncHandler(async (req, res) => {
         throw new Error('Please enter text')
     }
 
-    res.status(200).json({ message: 'Create Item' })
+    const item = await Item.create({
+        text: req.body.text
+    })
+
+    res.status(200).json(item)
 });
 
 // @desc   Update item by id

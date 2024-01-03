@@ -16,7 +16,7 @@ const mongoose = require("mongoose");
 
 const itemSchema = mongoose.Schema(
   {
-    description: {
+    text: {
       type: String,
       required: [true, "Please enter a description of the item."],
     },
@@ -46,12 +46,11 @@ const itemSchema = mongoose.Schema(
     },
     picture: {
       type: String,
-      required: true,
+      required: false,
     },
     itemID: {
       type: String,
       unique: true,
-      required: false,
     },
     itemCategory: {
       type: String,
