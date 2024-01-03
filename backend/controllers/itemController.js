@@ -21,7 +21,7 @@ const createItem = asyncHandler(async (req, res) => {
     }
 
     const item = await Item.create({
-        text: req.body.text
+        text: req.body.text,
     })
 
     res.status(200).json(item)
@@ -31,7 +31,18 @@ const createItem = asyncHandler(async (req, res) => {
 // @route PUT /api/items/:id
 // @access Private
 const updateItem = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: `Update Item ${req.params.id}` })
+    const item = await Item.findById(req.params.id);
+
+    if(!item) {
+        res.status(404)
+        throw new Error('Item not found')
+    }
+
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    })
+
+    res.status(200).json(updatedItem)
 });
 
 // @desc   Delete Item by id
