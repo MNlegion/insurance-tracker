@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
+const Item = require('../models/itemModel');
+
 // @desc   Get all items
 // @route GET /api/items
 // @access Private
