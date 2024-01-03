@@ -22,13 +22,13 @@ const createItem = asyncHandler(async (req, res) => {
 
     const item = await Item.create({
         text: req.body.text,
-        makeModelSerial: req.body.makeModelSerial,
-        location: req.body.location,
         quantity: req.body.quantity,
-        dateOfPurchase: req.body.dateOfPurchase,
-        costOfItem: req.body.costOfItem,
-        costOfReplacement: req.body.costOfReplacement,
-        itemCategory: req.body.itemCategory,
+        // makeModelSerial: req.body.makeModelSerial,
+        // location: req.body.location,
+        // dateOfPurchase: req.body.dateOfPurchase,
+        // costOfItem: req.body.costOfItem,
+        // costOfReplacement: req.body.costOfReplacement,
+        // itemCategory: req.body.itemCategory,
     })
 
     res.status(200).json(item)
