@@ -49,7 +49,16 @@ const updateItem = asyncHandler(async (req, res) => {
 // @route DELETE api/items/:id
 // @access Private
 const deleteItem = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: `Delete Item ${req.params.id}` })
+    const item = await Item.findById(req.params.id);
+
+    if(!item) {
+        res.status(404)
+        throw new Error('Item not found')
+    }
+
+    await item.deleteOne()
+
+    res.status(200).json({ id: req.params.id })
 });
 
 
