@@ -56,7 +56,23 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route GET /api/users/me
 // @access Public
 const getMe = asyncHandler(async (req, res) => {
-    res.json({message: "User Profile Retrieved"}) 
+
+    const {email, password} = req.body;
+
+    // Check if user exists by email
+    const user = await User.findOne({email});
+
+    // Check if password matches
+    if(user && (await bcrypt.compare(password, user.password))) {
+        res.json({
+            _id: user.id,
+            name: user.name,
+            email: user.email
+        })
+    } else {
+        res.status(401)
+        throw new Error('Invalid credentials')
+    }
 })
 
 
