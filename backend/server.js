@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes using baseline path
 app.use("/api/items", require("./routes/itemRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 // Error Middleware
 app.use(errorHandler);
