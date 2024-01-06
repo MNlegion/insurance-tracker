@@ -51,7 +51,7 @@ const updateItem = asyncHandler(async (req, res) => {
 
   //   Check for User
   if (!user) {
-    res.status(404);
+    res.status(404); 
     throw new Error("User not found");
   }
 
@@ -77,6 +77,20 @@ const deleteItem = asyncHandler(async (req, res) => {
   if (!item) {
     res.status(404);
     throw new Error("Item not found");
+  }
+
+  const user = await User.findById(req.user.id);
+
+  //   Check for User
+  if (!user) {
+    res.status(404); 
+    throw new Error("User not found");
+  }
+
+  //   Check if user owns item
+  if (item.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
 
   await item.deleteOne();
