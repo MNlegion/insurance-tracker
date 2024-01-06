@@ -49,13 +49,6 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/login
 // @access Public 
 const loginUser = asyncHandler(async (req, res) => {
-    res.json({message: "Login User Successful"})
-})
-
-// @desc   Get User Data
-// @route GET /api/users/me
-// @access Public
-const getMe = asyncHandler(async (req, res) => {
 
     const {email, password} = req.body;
 
@@ -73,6 +66,14 @@ const getMe = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('Invalid credentials')
     }
+})
+
+// @desc   Get User Data
+// @route GET /api/users/me
+// @access Public
+const getMe = asyncHandler(async (req, res) => {
+
+    
 })
 
 
