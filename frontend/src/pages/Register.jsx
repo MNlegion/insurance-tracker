@@ -1,3 +1,4 @@
+import { set } from "mongoose";
 import { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 
@@ -11,7 +12,17 @@ function Register() {
 
   const { name, email, password, passwordConfirm } = formData;
 
-  const onChange = (e) => {};
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
 
   return (
     <>
@@ -23,7 +34,7 @@ function Register() {
       </section>
 
       <section className="form">
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
               type="text"
@@ -37,7 +48,7 @@ function Register() {
           </div>
           <div className="form-group">
             <input
-              type="text"
+              type="email"
               className="form-control"
               id="email"
               name="email"
@@ -48,7 +59,7 @@ function Register() {
           </div>
           <div className="form-group">
             <input
-              type="text"
+              type="password"
               className="form-control"
               id="password"
               name="password"
@@ -59,7 +70,7 @@ function Register() {
           </div>
           <div className="form-group">
             <input
-              type="text"
+              type="password"
               className="form-control"
               id="passwordConfirm"
               name="passwordConfirm"
@@ -69,7 +80,9 @@ function Register() {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-block">Submit</button>
+            <button type="submit" className="btn btn-block">
+              Submit
+            </button>
           </div>
         </form>
       </section>
