@@ -55,6 +55,7 @@ function Register() {
         password,
       };
       dispatch(register(userData));
+      
     }
   };
   console.log(formData);
