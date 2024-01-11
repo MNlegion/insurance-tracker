@@ -48,7 +48,7 @@ export const getItems = createAsyncThunk(
 );
 
 export const itemSlice = createSlice({
-  name: "items",
+  name: "item",
   initialState,
   reducers: {
     reset: (state) => initialState,

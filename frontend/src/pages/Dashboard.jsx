@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import ItemForm from "../components/ItemForm"
 import Spinner from "../components/Spinner"
-import {getItems, reset} from "../features/items/itemSlice"
+import {getItems} from "../features/items/itemSlice"
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -13,19 +13,17 @@ function Dashboard() {
   const { items, isLoading, isError, message } = useSelector((state) => state.items)
 
   useEffect(() => {
-    if(isError) {
-      console.log(message)
+    if (isError) {
+      navigate('/login')
     }
 
     if (!user) {
       navigate('/login')
+      return
     }
 
     dispatch(getItems())
 
-    return () => {
-      dispatch(reset())
-    }
   }, [user, navigate, isError, message, dispatch])
   
   if (isLoading) {
