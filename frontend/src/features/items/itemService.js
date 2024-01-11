@@ -15,8 +15,22 @@ const createItem = async (itemData, token) => {
   return response.data;
 };
 
+// Get User Items
+const getItems = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(API_URL, config);
+
+  return response.data;
+};
+
 const itemService = {
   createItem,
+  getItems
 };
 
 export default itemService;
