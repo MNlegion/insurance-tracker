@@ -23,14 +23,14 @@ const getItems = async (token) => {
     },
   };
 
-  const response = await axios.post(API_URL, config);
+  const response = await axios.get(API_URL, config);
 
   return response.data;
 };
 
 const itemService = {
   createItem,
-  getItems
+  getItems,
 };
 
 export default itemService;

@@ -58,7 +58,7 @@ export const itemSlice = createSlice({
       .addCase(createItem.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createItem.fulfilled, (state, { action }) => {
+      .addCase(createItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.items.push(action.payload);
@@ -71,7 +71,7 @@ export const itemSlice = createSlice({
       .addCase(getItems.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getItems.fulfilled, (state, { action }) => {
+      .addCase(getItems.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.items = action.payload;
@@ -80,7 +80,7 @@ export const itemSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        });
+      });
   },
 });
 
