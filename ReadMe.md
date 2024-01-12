@@ -2,7 +2,7 @@
 
 ## Template - Full Updates Coming
 
-Welcome to your MERN (MongoDB, Express.js, React, Node.js) application! This README will help you get started with my project and provide guidance on how to use it for your needs.
+Welcome to my MERN (MongoDB, Express.js, React, Node.js) application! This README will help you get started with my project and provide guidance on how to use it for your needs. This application will help you track your personal items for home insurance purposes. 
 
 ## Table of Contents
 
