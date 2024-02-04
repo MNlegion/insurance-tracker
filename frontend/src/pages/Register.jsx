@@ -58,7 +58,7 @@ function Register() {
       
     }
   };
-  console.log(formData);
+  
 
   if (isLoading) {
     return <Spinner />;
